@@ -23,7 +23,7 @@ class PackageList
   setPackages: ->
     if atom.config.get('package-sync.forceOverwrite') or not fs.existsSync(PackageList.getPackageListPath())
       available = atom.packages.getAvailablePackageNames()
-      packages = (name for name in available when not atom.packages.isBundledPackage(name))
+      packages = (name for name in available when not atom.packages.isBundledPackage(name) and name != ".bin")
       CSON.writeFileSync(PackageList.getPackageListPath(), {'packages': packages})
 
   # Internal: Gets the path to the package list.

@@ -38,6 +38,30 @@ The `packages.cson` file follows the format:
 
 Where the contents of the array is a list of packages to ensure are installed.
 
+**Synchronizing your Packages and Atom Config with Git**
+
+Setup git repo in `~/.atom/` with `.gitignore` like this:
+
+```gitignore
+/packages/*
+!/packages/package-sync
+
+/storage
+/compile-cache
+/blob-store
+/dev
+/.npm
+/.node-gyp
+/.apm
+/.git
+/.git-history
+/.node-gyp
+
+.DS_Store
+*.log
+npm-debug.log*
+```
+
 ### Configuration
 
 * `createOnChange` &mdash; Create the package list when packages are installed or removed via the Atom settings. You must restart Atom after installing Package Sync for this setting to take effect, and it works best when paired with the `forceOverwrite` setting.
